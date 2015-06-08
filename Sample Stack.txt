@@ -1,0 +1,107 @@
+0:000> kL
+ # ChildEBP RetAddr  
+00 0111f1dc 002e0412 node!v8::internal::ElementsAccessorBase<v8::internal::FastHoleyObjectElementsAccessor,v8::internal::ElementsKindTraits<3> >::SetLengthImpl+0x43
+01 0111f1e8 002e8c66 node!v8::internal::ElementsAccessorBase<v8::internal::FastHoleySmiElementsAccessor,v8::internal::ElementsKindTraits<1> >::SetLength+0x12
+02 0111f1f8 14a0a376 node!v8::internal::StoreIC_ArrayLength+0x26
+WARNING: Frame IP not in any known module. Following frames may be wrong.
+03 0111f214 14a366ca 0x14a0a376
+04 0111f258 14a363e4 0x14a366ca
+05 0111f280 2682ae58 0x14a363e4
+06 0111f320 14a0e501 0x2682ae58
+07 0111f338 26829069 0x14a0e501
+08 0111f35c 26821a21 0x26829069
+09 0111f37c 2682159b 0x26821a21
+0a 0111f3a4 14a0e501 0x2682159b
+0b 0111f3cc 2682a0be 0x14a0e501
+0c 0111f410 26820569 0x2682a0be
+0d 0111f428 2681cf5b 0x26820569
+0e 0111f448 2681325c 0x2681cf5b
+0f 0111f484 14a0e501 0x2681325c
+10 0111f4a0 2681c510 0x14a0e501
+11 0111f4c4 2681adb3 0x2681c510
+12 0111f500 14a21899 0x2681adb3
+13 0111f520 14a1308a 0x14a21899
+14 0111f55c 0022c1ae 0x14a1308a
+15 0111f5ac 0022c4eb node!v8::internal::Invoke+0xee
+16 0111f5ec 001e9b7a node!v8::internal::Execution::Call+0x17b
+17 0111f638 000e2798 node!v8::Function::Call+0x15a
+18 0111f66c 000e24dd node!node::Parser::on_headers_complete_+0x2b8
+19 0111f674 001b5365 node!node::Parser::on_headers_complete+0xd
+1a 0111f6a8 000e2fb5 node!http_parser_execute+0x205
+1b 0111f720 00297ae4 node!node::Parser::Execute+0x355
+1c 0111f788 00295de6 node!v8::internal::HandleApiCallHelper<0>+0x1e4
+1d 0111f798 14a0a376 node!v8::internal::Builtin_HandleApiCall+0x16
+1e 0111f7b4 2681a66a 0x14a0a376
+1f 0111f7ec 26819f1b 0x2681a66a
+20 0111f820 14a21899 0x26819f1b
+21 0111f848 14a1308a 0x14a21899
+22 0111f884 0022c1ae 0x14a1308a
+23 0111f8d4 0022c4eb node!v8::internal::Invoke+0xee
+24 0111f914 001e9b7a node!v8::internal::Execution::Call+0x17b
+25 0111f960 000c966b node!v8::Function::Call+0x15a
+26 0111f99c 000c9773 node!node::MakeCallback+0xcb
+27 0111f9dc 000ed6e1 node!node::MakeCallback+0x53
+28 0111fa44 000ed71d node!node::StreamWrap::OnReadCommon+0x2b1
+29 0111fa60 001d5213 node!node::StreamWrap::OnRead+0x1d
+2a 0111fa94 001be461 node!uv_process_tcp_read_req+0x1c3
+2b 0111fab4 001beaed node!uv_process_reqs+0x91
+2c 0111fad0 000e448c node!uv_run+0xbd
+2d 0111fb1c 003d1bd4 node!wmain+0x19c
+2e 0111fb64 74c08624 node!__tmainCRTStartup+0x10b
+2f 0111fb70 7764bf39 KERNEL32!BaseThreadInitThunk+0xe
+30 0111fbb4 7764bf0c ntdll!__RtlUserThreadStart+0x72
+31 0111fbcc 00000000 ntdll!_RtlUserThreadStart+0x1b
+0:000> !v8dbgexts.stack
+ #  ChildEBP RetAddr  Args to Child
+00 0111f1dc 002e0412 node!v8::internal::ElementsAccessorBase<v8::internal::FastHoleyObjectElementsAccessor,v8::internal::ElementsKindTraits<3> >::SetLengthImpl+0x43
+01 0111f1e8 002e8c66 node!v8::internal::ElementsAccessorBase<v8::internal::FastHoleySmiElementsAccessor,v8::internal::ElementsKindTraits<1> >::SetLength+0x12
+02 0111f1f8 14a0a376 node!v8::internal::StoreIC_ArrayLength+0x26
+03 0111f214 14a366ca undefined [ ]
+04 0111f258 14a363e4 Join [native array.js ]
+05 0111f280 2682ae58 join [native array.js ]
+06 0111f320 14a0e501 exports.resolve [path.js @ 89 ]
+07 0111f338 26829069 exports.resolve [path.js @ 89 ]
+08 0111f35c 26821a21 exports._makeLong [path.js @ 460 ]
+09 0111f37c 2682159b fs.open [fs.js @ 424 ]
+0a 0111f3a4 14a0e501 fs.writeFile [fs.js @ 937 ]
+0b 0111f3cc 2682a0be fs.writeFile [fs.js @ 937 ]
+0c 0111f410 26820569 fileASyncTest [D:\TestCode\NodeDebugger\server.js @ 20 ]
+0d 0111f428 2681cf5b wzhao_execute_request [D:\TestCode\NodeDebugger\server.js @ 29 ]
+0e 0111f448 2681325c <anounymous> [D:\TestCode\NodeDebugger\server.js @ 164 ]
+0f 0111f484 14a0e501 emit [events.js @ 53 ]
+10 0111f4a0 2681c510 emit [events.js @ 53 ]
+11 0111f4c4 2681adb3 parser.onIncoming [http.js @ 2042 ]
+12 0111f500 14a21899 parserOnHeadersComplete [http.js @ 69 ]
+13 0111f520 14a1308a ??
+14 0111f55c 0022c1ae ??
+15 0111f5ac 0022c4eb node!v8::internal::Invoke+0xee
+16 0111f5ec 001e9b7a node!v8::internal::Execution::Call+0x17b
+17 0111f638 000e2798 node!v8::Function::Call+0x15a
+18 0111f66c 000e24dd node!node::Parser::on_headers_complete_+0x2b8
+19 0111f674 001b5365 node!node::Parser::on_headers_complete+0xd
+1a 0111f6a8 000e2fb5 node!http_parser_execute+0x205
+1b 0111f720 00297ae4 node!node::Parser::Execute+0x355
+1c 0111f788 00295de6 node!v8::internal::HandleApiCallHelper<0>+0x1e4
+1d 0111f798 14a0a376 node!v8::internal::Builtin_HandleApiCall+0x16
+1e 0111f7b4 2681a66a undefined [ ]
+1f 0111f7ec 26819f1b socket.ondata [http.js @ 1968 ]
+20 0111f820 14a21899 onread [net.js @ 496 ]
+21 0111f848 14a1308a ??
+22 0111f884 0022c1ae ??
+23 0111f8d4 0022c4eb node!v8::internal::Invoke+0xee
+24 0111f914 001e9b7a node!v8::internal::Execution::Call+0x17b
+25 0111f960 000c966b node!v8::Function::Call+0x15a
+26 0111f99c 000c9773 node!node::MakeCallback+0xcb
+27 0111f9dc 000ed6e1 node!node::MakeCallback+0x53
+28 0111fa44 000ed71d node!node::StreamWrap::OnReadCommon+0x2b1
+29 0111fa60 001d5213 node!node::StreamWrap::OnRead+0x1d
+2a 0111fa94 001be461 node!uv_process_tcp_read_req+0x1c3
+2b 0111fab4 001beaed node!uv_process_reqs+0x91
+2c 0111fad0 000e448c node!uv_run+0xbd
+2d 0111fb1c 003d1bd4 node!wmain+0x19c
+2e 0111fb64 74c08624 node!__tmainCRTStartup+0x10b
+2f 0111fb70 7764bf39 KERNEL32!BaseThreadInitThunk+0xe
+30 0111fbb4 7764bf0c ntdll!__RtlUserThreadStart+0x72
+31 0111fbcc 00000000 ntdll!_RtlUserThreadStart+0x1b
+
+

@@ -1,0 +1,86 @@
+﻿1.Install Python, Subversion client; make it available from a command line.
+2.Open Visual Studio Command Prompt, do next steps there. 
+3.
+Fetch V8 sources into some directory, say it would be named v8-build:
+
+svn checkout http://v8.googlecode.com/svn/trunk v8-build
+
+
+for the recent version (either some tagged version, for example http://v8.googlecode.com/svn/tags/3.28.57) 
+4.On Windows you need Cygwin: svn checkout http://src.chromium.org/svn/trunk/deps/third_party/cygwin@66844 v8-build/third_party/cygwin
+
+(see actual URL in a v8-build/DEPS file)
+5.
+Fetch GYP:
+
+svn checkout http://gyp.googlecode.com/svn/trunk@1831 v8-build/gyp
+
+6.
+Optionally fetch ICU:
+
+svn checkout https://src.chromium.org/svn/trunk/deps/third_party/icu46@258359 v8-build/third_party/icu
+
+7.
+Make tools available in the command line:
+•set CYGWIN_ROOT=%cd%\v8-build\third_party\cygwin
+•set PATH=%CYGWIN_ROOT%\bin;%PATH%
+•set PYTHONPATH=%cd%\v8-build\gyp\pylib
+•v8-build\third_party\cygwin\setup_mount.bat
+•v8-build\third_party\cygwin\setup_env.bat
+
+8.
+Run GYP with desired options:
+
+python v8-build\build\gyp_v8 -Dcomponent=static_library -Dtarget_arch=x64 -v8_enable_i18n_support=0 -Dv8_use_snapshot=0 -Gmsvs_version=2013
+
+(see allowed variables in v8-build\build\features.gypi)
+9.Build generated project with Visual Studio using the Cygwin environment:
+
+msbuild /m /p:UseEnv=true /p:Configuration=Release /p:Platform=x64 v8-build\tools\gyp\v8.vcxproj
+
+10.
+Result libraries should be in the v8-build\build directory 
+
+warning 4819
+
+
+
+svn checkout http://v8.googlecode.com/svn/tags/3.28.57/ v8-build
+svn checkout http://src.chromium.org/svn/trunk/deps/third_party/cygwin@66844 v8-build/third_party/cygwin
+svn checkout http://gyp.googlecode.com/svn/trunk@1831 v8-build/gyp
+
+mkdir v8
+mkdir v8\lib
+mkdir v8\lib\Release
+mkdir v8\lib\Debug
+mkdir v8\include
+
+call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\Tools\VsDevCmd.bat"
+
+set CYGWIN_ROOT=%cd%\v8-build\third_party\cygwin
+set PATH=%CYGWIN_ROOT%\bin;%PATH%
+set PYTHONPATH=%cd%\v8-build\gyp\pylib
+
+call v8-build\third_party\cygwin\setup_mount.bat
+call v8-build\third_party\cygwin\setup_env.bat
+
+python v8-build\build\gyp_v8 -Dcomponent=static_library -Dtarget_arch=ia32 -Dv8_enable_i18n_support=0 -Dv8_use_snapshot=0
+
+msbuild /m /p:UseEnv=true /p:Configuration=Release /p:Platform=x86 v8-build\tools\gyp\v8.vcxproj
+msbuild /m /p:UseEnv=true /p:Configuration=Release /p:Platform=x86 v8-build\tools\gyp\v8_libplatform.vcxproj
+msbuild /m /p:UseEnv=true /p:Configuration=Release /p:Platform=x86 v8-build\tools\gyp\v8_libbase.vcxproj
+msbuild /m /p:UseEnv=true /p:Configuration=Debug /p:Platform=x86 v8-build\tools\gyp\v8.vcxproj
+msbuild /m /p:UseEnv=true /p:Configuration=Debug /p:Platform=x86 v8-build\tools\gyp\v8_libplatform.vcxproj
+msbuild /m /p:UseEnv=true /p:Configuration=Debug /p:Platform=x86 v8-build\tools\gyp\v8_libbase.vcxproj
+
+xcopy /y /c "v8-build\build\Debug\lib\*.lib" "v8\lib\Debug\"
+xcopy /y /c "v8-build\build\Release\lib\*.lib" "v8\lib\Release\"
+xcopy /y /c /s "v8-build\include\*.h" "v8\include\"
+
+
+http://stackoverflow.com/questions/26576312/how-to-link-required-libraries-to-use-google-v8-in-visual-studio-c-project
+
+
+https://blog.indutny.com/3.dtrace-ustack-helper
+
+
