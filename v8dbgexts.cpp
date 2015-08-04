@@ -120,7 +120,7 @@ DebugExtensionInitialize(PULONG Version, PULONG Flags)
         //
         ExtensionApis.nSize = sizeof (ExtensionApis);
         Hr = DebugControl->GetWindbgExtensionApis64(&ExtensionApis);
-
+		
         DebugControl->Release();
 
     }

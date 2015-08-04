@@ -14,7 +14,10 @@ EXPORTS
 	stack
 	v8ver
 	dumpJsObj
-
+	findJsObject
+	objType
+	dumpJsFun
+	test
 
 ;--------------------------------------------------------------------
 ;
