@@ -340,7 +340,7 @@ function fibo(n) {
 
 
 
-##PHP Core Globals
+##JSObject type
 0:000> !objType 26b30114  
 Object @ 26b30114 type=b6 ( SHARED_FUNCTION_INFO_TYPE )  
  
