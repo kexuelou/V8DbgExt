@@ -1767,6 +1767,7 @@ void PrintJSFunctionName(ULONG_PTR jsSharedFunction)
    
 			dprintf("<anounymous>");
 		}
+		dprintf("\n");
 	}
 	else
 	{
@@ -2530,10 +2531,13 @@ void PrintJSFuncInfo(ULONG_PTR sharedFuncInfo)
 		return;
 	}
 
-
+	dprintf("Function : ");
 	PrintJSFunctionName(DEV8PTR(sharedFuncInfo));
+
+	dprintf("File Name : ");
 	PrintJSScriptFileName(DEV8PTR(sharedFuncInfo));
-	//PrintLineNo(DEV8PTR(sharedFuncInfo));
+	PrintLineNo(DEV8PTR(sharedFuncInfo));
+	dprintf("\n");
 
 	int end = GetFuncEndPostion(DEV8PTR(sharedFuncInfo));
 	int start = GetFuncStartPostion(DEV8PTR(sharedFuncInfo));
