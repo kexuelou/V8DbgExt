@@ -1,7 +1,7 @@
 # V8/Node.js Debugging Extension
 A Windbg Extension to debugging V8/Node.js running on Windows.
 
-This references the MDB implementation. Currently, not all feature of MDB was implemented.
+This references the MDB implementation. Currently, not all features of MDB were implemented.
 
 [https://github.com/joyent/node/tree/master/deps/mdb_v8](https://github.com/joyent/node/tree/master/deps/mdb_v8)
 
